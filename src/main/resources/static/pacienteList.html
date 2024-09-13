@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Pacientes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+<div class="content-body">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="./index.html">Clínica Odontológica</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Odontólogos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./odontologoAlta.html">Agregar</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./odontologoList.html">Listar Todos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Pacientes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./pacienteAlta.html">Agregar</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./pacienteList.html">Listar Todos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                           aria-expanded="false">
+                            Turnos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="./turnoAlta.html">Agregar</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="./turnoList.html">Listar Todos</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h2 class="text-center">Pacientes</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="div_paciente_table">
+                    <div class="table-responsive">
+                        <table id="pacienteTable" class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID (Modificar)</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Domicilio</th>
+                                <th>DNI</th>
+                                <th>Fecha de Alta</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            </thead>
+                            <tbody id="pacienteTableBody">
+                            <!-- Los datos se insertarán aquí con JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div id="table_response" class="mt-3 text-center" style="display:none;">
+                    <!-- Mensajes de respuesta se insertarán aquí -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6" style="display: none; background-color:#e4f4fd; padding:30px; border-radius:8px" id="div_paciente_updating">
+                <h4 class="text-center">Modificar Paciente</h4>
+                <form id="update_paciente_form">
+                    <div class="form-group mb-3">
+                        <label for="paciente_id">ID:</label>
+                        <input type="text" class="form-control" id="paciente_id" readonly>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="apellido">Apellido:</label>
+                        <input type="text" class="form-control" id="apellido" placeholder="Apellido" required>
+                    </div>
+
+                    <!-- Tarjeta de domicilio -->
+                    <div class="card mb-3" style="background-color:#e4f4fd;" >
+                        <div class="card-header">
+                            <h5 class="card-title">Domicilio</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group mb-3">
+                                <label for="domicilio_id">ID:</label>
+                                <input type="text" class="form-control" id="domicilio_id" readonly>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="domicilio_calle">Calle:</label>
+                                <input type="text" class="form-control" id="domicilio_calle" placeholder="Calle" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="domicilio_numero">Número:</label>
+                                <input type="text" class="form-control" id="domicilio_numero" placeholder="Número" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="domicilio_localidad">Localidad:</label>
+                                <input type="text" class="form-control" id="domicilio_localidad" placeholder="Localidad" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="domicilio_provincia">Provincia:</label>
+                                <input type="text" class="form-control" id="domicilio_provincia" placeholder="Provincia" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="dni">DNI:</label>
+                        <input type="text" class="form-control" id="dni" placeholder="DNI" required>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="fecha_alta">Fecha de Alta:</label>
+                        <input type="date" class="form-control" id="fecha_alta" readonly>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Modificar</button>
+                </form>
+                <div id="response" class="mt-3 text-center" style="display:none;">
+                    <!-- Mensajes de respuesta se insertarán aquí -->
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5 p-4 text-center">
+    <p class="mb-0"> Oriana Valentina Guerrero Torrado - Claudio Van Anghelo Flores Uceda</p>
+    <p class="mb-0">&copy; 2024 Clínica Odontológica. Todos los derechos reservados.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="./js/get_paciente.js"></script>
+<script type="text/javascript" src="./js/update_paciente.js"></script>
+<script type="text/javascript" src="./js/delete_paciente.js"></script>
+</body>
+</html>
